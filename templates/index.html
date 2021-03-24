@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{%block body%}
+<h1>{{err}}</h1>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<form action="/" method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="name" placeholder="name"><br><br>
+    <input type="text" name="email" placeholder="email"><br><br>
+    <input type="text" name="mobile" placeholder="mobile"><br><br>
+    <input type="text" name="subject" placeholder="subject"><br><br>
+    <textarea name="message" id="" cols="30" rows="10" placeholder="message"></textarea><br><br>
+    <button type="submit">Save</button>
+</form>
+
+{% for dt in  Contacts%}
+{{dt.name}} - {{dt.mobile}} <br>
+{%endfor%}
+{%endblock%}
