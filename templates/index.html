@@ -18,8 +18,9 @@
     <textarea name="message" id="" cols="30" rows="10" placeholder="message"></textarea><br><br>
     <button type="submit">Save</button>
 </form>
-
+<a href="/">Go Back</a>
+<br>
 {% for dt in  Contacts%}
-{{dt.name}} - {{dt.mobile}} - {{dt.both}} <br>
+{{dt.name}} - {{dt.mobile}} - {{dt.both}}  - <a href="/{{dt.pk}}/">Select</a> <br>
 {%endfor%}
 {%endblock%}

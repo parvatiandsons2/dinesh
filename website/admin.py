@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import ContactUs, BlogCategory, Blog
 from django.utils.text import slugify
+from django.utils.html import format_html
+
 # Register your models here.
 
 
@@ -13,9 +15,22 @@ class ContactUsAdmin(admin.ModelAdmin):
 
 class BlogCategoryAdmin(admin.ModelAdmin):
 
-    list_display=['name', 'is_active','created_by', 'created_on']
+    list_display=['name','html', 'is_active','created_by', 'created_on']
     search_fields =['name']
     list_filter = ['is_active']
+    date_hierarchy='created_on'
+    # fieldsets= ((None, {'fields':(('is_active', 'name'),('image'))}),)
+    exclude=('is_active',)
+    list_display_links=['created_on',]
+    # list_per_page=10
+
+    # list_editable = ['name',]
+
+    def html(self, obj):
+        if obj.image:
+            return format_html(f'<img src="{obj.image.url}" width="100" />')
+        else:
+            return 'NA'
 
 
     def save_model(self, request, obj, form, change):
@@ -23,8 +38,9 @@ class BlogCategoryAdmin(admin.ModelAdmin):
             obj.created_by = request.user
         else:
             oldImg = BlogCategory.objects.get(pk=obj.pk)
-            if(oldImg.image!=obj.image):
-                deleteFile(oldImg.image.path)
+            if oldImg.image:
+                if(oldImg.image!=obj.image):
+                    deleteFile(oldImg.image.path)
 
         return super().save_model(request, obj, form, change)
     
