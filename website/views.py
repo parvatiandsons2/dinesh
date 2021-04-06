@@ -64,3 +64,32 @@ def contactbyID(request, id):
     except Exception as ex:
         messages.add_message(request, messages.ERROR, ex)
         return render(request, 'index.html')
+
+
+def index(request):
+    return render(request, 'index.html')
+
+def about(request):
+    return render(request, 'index.html')
+
+def contact(request):
+    return render(request, 'index.html')
+
+def service(request):
+    return render(request, 'index.html')
+
+def blog(request):
+    __context={}
+
+    objBlog = Blog.objects.filter(is_active=True)
+    __context['blogs']=objBlog
+
+    return render(request, 'blog.html', __context)
+
+def feedback(request):
+    return render(request, 'index.html')
+
+def blog_details(requset, url):
+    # blog.objects.filter(url=url);
+    print(url)
+    return render(requset, 'index.html')

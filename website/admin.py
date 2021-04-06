@@ -67,7 +67,7 @@ class BlogAdmin(admin.ModelAdmin):
         return obj.name+'-'+obj.category.name
 
     def save_model(self, request, obj, form, change):
-        obj.name= obj.name.trim()
+        # obj.name= obj.name.trim()
 
         obj.url = slugify(obj.name)
         return super().save_model(request, obj, form, change)

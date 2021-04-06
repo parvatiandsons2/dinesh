@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for dt in blogs %}
+            <tr>
+                <td>{{dt.name}}</td>
+                <td>{{dt.category}}</td>
+                {% if dt.category.image %}
+                    <td>
+                        <img src="{{dt.category.image.url}}" style="width: 100px;" alt="">
+                    </td>
+                {% else %}
+                <td>NA</td>
+                {%endif%}
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -9,6 +9,16 @@
 </head>
 
 <body>
+    <ul>
+        <li> <a href="{% url 'home' %}">Index</a> </li>
+        <li> <a href="{% url 'about' %}">about</a> </li>
+        <li> <a href="{% url 'contact' %}">contact</a> </li>
+        <li> <a href="{% url 'service' %}">service</a> </li>
+        <li> <a href="{% url 'blog' %}">blog</a> </li>
+        <li> <a href="{% url 'feedback' %}">feedback</a> </li>
+        <li> <a href="{% url 'index_1' %}">index_1</a> </li>
+        <li> <a href="{% url 'blog_details' 'what-is-name' %}">asdfsdfsdf</a> </li>
+    </ul>
 {%block body%}
 {%endblock%}
 </body>

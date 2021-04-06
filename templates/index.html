@@ -21,6 +21,6 @@
 <a href="/">Go Back</a>
 <br>
 {% for dt in  Contacts%}
-{{dt.name}} - {{dt.mobile}} - {{dt.both}}  - <a href="/{{dt.pk}}/">Select</a> <br>
+{{dt.name}} - {{dt.mobile}} - {{dt.both}}  - <a href="{% url 'index_2' dt.pk %}">Select</a> <br>
 {%endfor%}
 {%endblock%}
