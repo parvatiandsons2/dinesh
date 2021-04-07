@@ -76,9 +76,10 @@ docs/_build/
 
 # PyBuilder
 target/
-static/images/
+static/img/
 static/fonts/
 dinesh/static/
+static/assets/
 
 ### Django ###
 *.log

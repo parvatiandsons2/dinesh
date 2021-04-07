@@ -1,8 +1,10 @@
+from django.db import models
 from django.shortcuts import render
 from django.contrib import messages
 from website.models import ContactUs, Blog, BlogCategory
 from django.db.models import Count
 from django.db.models import CharField
+from products.models import Products
 from django.db.models.functions import Lower
 
 # Create your views here.
@@ -67,7 +69,12 @@ def contactbyID(request, id):
 
 
 def index(request):
-    return render(request, 'index.html')
+    __context = {}
+
+    data = Products.objects.all()
+
+    __context['data'] = data
+    return render(request, 'index.html', __context)
 
 def about(request):
     return render(request, 'index.html')
@@ -93,3 +100,5 @@ def blog_details(requset, url):
     # blog.objects.filter(url=url);
     print(url)
     return render(requset, 'index.html')
+
+
