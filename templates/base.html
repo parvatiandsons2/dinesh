@@ -57,6 +57,18 @@
                                                     <li><a href="index-4.html">Home Version 4</a></li>
                                                 </ul>
                                             </li>
+                                            {% for dt in cat %}
+                                            <li class="active">
+                                                <a href="index.html">{{dt.name}} <i class="fa fa-angle-down"></i></a>
+                                                <ul class="sub_menu">
+                                                    {% for st in dt.subcategory_set.all %}
+                                                    <li><a href="index.html">{{st.name}}</a></li>
+                                                    {% endfor %}
+                                                   
+                                                </ul>
+                                            </li>
+                                            {% endfor %}
+
                                             <li><a href="about.html">about us </a> </li>
                                             <li><a href="shop.html">shop</a> </li>
                                             <li>

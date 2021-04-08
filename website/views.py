@@ -4,7 +4,7 @@ from django.contrib import messages
 from website.models import ContactUs, Blog, BlogCategory
 from django.db.models import Count
 from django.db.models import CharField
-from products.models import Products
+from products.models import Products,Category, SubCategory
 from django.db.models.functions import Lower
 
 # Create your views here.
@@ -72,9 +72,20 @@ def index(request):
     __context = {}
 
     data = Products.objects.all()
+    cat = Category.objects.all()
+    
 
     __context['data'] = data
+    __context['cat'] = cat
     return render(request, 'index.html', __context)
+
+def productDetails(request, id):
+    __context = {}
+
+    data = Products.objects.get(pk=id)
+
+    __context['data'] = data
+    return render(request, 'productDetails.html', __context)
 
 def about(request):
     return render(request, 'index.html')
